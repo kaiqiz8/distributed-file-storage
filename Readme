@@ -1,0 +1,62 @@
+# Big picture first (otherwise everything feels random)
+
+Goal of the course
+Build a decentralized, content-addressable, distributed file storage system in Go, from scratch.
+
+Translation:
+
+No central server
+
+Files are identified by hash, not filename
+
+Data lives across multiple nodes
+
+Nodes talk directly to each other (P2P)
+
+Can handle and stream large files
+
+Think: “mini IPFS, but educational and explicit.”
+
+## So… what does P2P actually do in this project?
+
+Short answer:
+
+P2P is the nervous system of the distributed filesystem.
+
+Longer, precise answer:
+
+P2P is responsible for:
+
+Listening for incoming nodes
+
+Dialing outbound nodes
+
+Managing connections
+
+Identifying peers
+
+Performing handshakes
+
+Reading and writing messages
+
+Decoupling network code from storage logic
+
+P2P is NOT responsible for:
+
+Storing files
+
+Hashing content
+
+Deciding where files live
+
+Chunking logic
+
+Business rules
+
+That separation is deliberate and professional.
+
+One sentence mental model (keep this)
+
+P2P answers “how nodes talk,” storage answers “what they say.”
+
+If you understand that, the repo stops feeling chaotic.
