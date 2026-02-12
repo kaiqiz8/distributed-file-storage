@@ -9,10 +9,16 @@ import (
 
 func main() {
 	// TCP server
-	tr := p2p.NewTCPTransport(":3000")
+	tcpOpts := p2p.TCPTransportOpts{
+		ListenAddr:    ":3000",
+		Decoder:       p2p.GOBDecoder{},
+		HandshakeFunc: p2p.NOPHandshakeFunc,
+	}
+	tr := p2p.NewTCPTransport(tcpOpts)
 	if err := tr.ListenAndAccpet(); err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println("We Gucci!")
+
 	select {}
 }
